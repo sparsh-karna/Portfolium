@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Netflix Style</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Initial Form Screen -->
+    <div class="initial-form-screen" id="initialForm">
+        <div class="form-container">
+            <h1>Create Your Portfolio</h1>
+            <form id="portfolioDetailsForm">
+                <div class="form-group">
+                    <input type="text" id="fullName" required>
+                    <label for="fullName">Full Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="title" required>
+                    <label for="title">Professional Title</label>
+                </div>
+                <div class="form-group">
+                    <textarea id="about" required></textarea>
+                    <label for="about">About You</label>
+                </div>
+                <div class="form-group">
+                    <input type="url" id="profileImage" required>
+                    <label for="profileImage">Profile Image URL</label>
+                </div>
+                <div class="skills-input">
+                    <h3>Skills (Rate from 0-100)</h3>
+                    <div class="form-group">
+                        <input type="number" id="reactSkill" min="0" max="100" required>
+                        <label for="reactSkill">React</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="jsSkill" min="0" max="100" required>
+                        <label for="jsSkill">JavaScript</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="nodeSkill" min="0" max="100" required>
+                        <label for="nodeSkill">Node.js</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="pythonSkill" min="0" max="100" required>
+                        <label for="pythonSkill">Python</label>
+                    </div>
+                </div>
+                <div class="social-input">
+                    <h3>Social Links</h3>
+                    <div class="form-group">
+                        <input type="url" id="github" required>
+                        <label for="github">GitHub URL</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="url" id="linkedin" required>
+                        <label for="linkedin">LinkedIn URL</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="url" id="twitter" required>
+                        <label for="twitter">Twitter URL</label>
+                    </div>
+                </div>
+                <button type="submit" class="netflix-button">Create Portfolio</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="netflix-loader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Portfolio Content (Initially Hidden) -->
+    <div class="portfolio-content" id="portfolioContent" style="display: none;">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h1 class="billboard-title" id="heroName">John Doe</h1>
+                <h2 class="billboard-subtitle" id="heroTitle">Full Stack Developer</h2>
+                <button class="netflix-button play-button" onclick="scrollToSection('about')">
+                    <span class="play-icon">▶</span> Learn More
+                </button>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about section-padding" id="about">
+            <div class="container">
+                <h2 class="section-title">About</h2>
+                <div class="about-content">
+                    <div class="profile-image">
+                        <img src="https://via.placeholder.com/400x400" alt="Profile" id="profileImg" loading="lazy">
+                    </div>
+                    <div class="about-text">
+                        <h3>Overview</h3>
+                        <p id="aboutText">A passionate full-stack developer with 5+ years of experience crafting beautiful and functional web applications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills section-padding" id="skills">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <div class="skill-item">
+                            <span>React</span>
+                            <div class="progress-bar">
+                                <div class="progress" id="reactProgress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>JavaScript</span>
+                            <div class="progress-bar">
+                                <div class="progress" id="jsProgress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <div class="skill-item">
+                            <span>Node.js</span>
+                            <div class="progress-bar">
+                                <div class="progress" id="nodeProgress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Python</span>
+                            <div class="progress-bar">
+                                <div class="progress" id="pythonProgress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section-padding" id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <div class="contact-content">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" required>
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" required>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" required></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                        <button type="submit" class="netflix-button">Send Message</button>
+                    </form>
+                    <div class="social-links" id="socialLinks">
+                        <a href="#" class="social-link" id="githubLink">GitHub</a>
+                        <a href="#" class="social-link" id="linkedinLink">LinkedIn</a>
+                        <a href="#" class="social-link" id="twitterLink">Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
